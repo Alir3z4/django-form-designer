@@ -25,6 +25,7 @@ setup(
         'form_designer.contrib.exporters',
         'form_designer.contrib.cms_plugins',
         'form_designer.contrib.cms_plugins.form_designer_form',
+        'form_designer.contrib.cms_plugins.form_designer_form.migrations',
     ],
     package_data = {
         'form_designer': [

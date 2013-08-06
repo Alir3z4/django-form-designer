@@ -13,12 +13,14 @@ class FormDesignerPlugin(CMSPluginBase):
     module = _('Form Designer')
     name = _('Form')
     admin_preview = False
+    render_template = 'html/formdefinition/detail.html'
 
     def render(self, context, instance, placeholder):
         if instance.form_definition.form_template_name:
-            self.render_template = instance.form_definition.form_template_name
+            form_template = instance.form_definition.form_template_name
         else:
-            self.render_template = settings.DEFAULT_FORM_TEMPLATE
+            form_template = settings.DEFAULT_FORM_TEMPLATE
+        context['form_template'] = form_template
 
         # Redirection does not work with CMS plugin, hence disable:
         return process_form(context['request'], instance.form_definition, context, disable_redirection=True)
